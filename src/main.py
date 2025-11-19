@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import uuid
 
 # Add parent directory to path to import modules
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -19,8 +20,14 @@ def main():
     mqtt_client = MQTTClient()
     mqtt_client.connect()
 
-    # Create 3 sensors with IDs 1, 2, and 3
-    sensors = [Sensor(sensor_id) for sensor_id in range(1, 4)]
+    #TODO Modify to use UUIDs from db 
+    sensor_ids = [
+        "550e8400-e29b-41d4-a716-446655440000",
+        "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+        "7c9e6679-7425-40de-944b-e07fc1f90ae7"
+    ]
+    sensors = [Sensor(sensor_id) for sensor_id in sensor_ids]
+
 
     try:
         while True:
